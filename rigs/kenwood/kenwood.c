@@ -116,6 +116,7 @@ static const struct kenwood_id_string kenwood_id_string_list[] =
     { RIG_MODEL_TS480,  "020" },
     { RIG_MODEL_PT8000A, "020" }, // TS480 ID but behaves differently
     { RIG_MODEL_SDRUNO, "020" }, // TS480 ID but behaves differently
+    { RIG_MODEL_QCX, "020" },	 // TS480 ID but behaves differently
     { RIG_MODEL_TS590S, "021" },
     { RIG_MODEL_TS990S, "022" },
     { RIG_MODEL_TS590SG,  "023" },
@@ -4964,6 +4965,7 @@ int kenwood_send_morse(RIG *rig, vfo_t vfo, const char *msg)
         case RIG_MODEL_K3S:
         case RIG_MODEL_KX2:
         case RIG_MODEL_KX3:
+        case RIG_MODEL_QCX:
             SNPRINTF(morsebuf, sizeof(morsebuf), "KY %s", m2);
             break;
 
@@ -5724,6 +5726,7 @@ DECLARE_INITRIG_BACKEND(kenwood)
     rig_register(&malachite_caps);
     rig_register(&tx500_caps);
     rig_register(&sdruno_caps);
+    rig_register(&qcx_caps);
 
     return (RIG_OK);
 }
